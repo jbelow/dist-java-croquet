@@ -28,22 +28,25 @@ public class HomeController {
         /**
          * Uncomment this section when you're ready to test your GlossaryTerm class.
          */
-//        try {
-//            terms = mapper.readValue(Paths.get("croquetGlossary.json").toFile(), GlossaryTerm[].class);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//            terms = new GlossaryTerm[0];
-//        }
+        try {
+            terms = mapper.readValue(Paths.get("croquetGlossary.json").toFile(), GlossaryTerm[].class);
+        } catch (IOException e) {
+            e.printStackTrace();
+            terms = new GlossaryTerm[0];
+        }
 
     }
 
     @RequestMapping("/rules")
     public String showRulesPage(Model model) {
         model.addAttribute("pageTitle", "Rules of Golf Croquet");
+        model.addAttribute("rules", rules);
 
         /**
          * Add the array of Strings to the model
          */
+
+
 
         return "croquet-rules";
     }
@@ -51,10 +54,17 @@ public class HomeController {
     @RequestMapping("/terms")
     public String showGlossaryPage(Model model) {
         model.addAttribute("pageTitle", "Golf Croquet Glossary");
+        model.addAttribute("terms", terms);
+
 
         /**
          * Add the array of GlossaryTerm objects to the model
          */
+//        GlossaryTerm glossary = new GlossaryTerm();
+//        glossary.getTerm();
+//        glossary.getDefinition();
+//        glossary.getRegulation();
+
 
         return "croquet-glossary";
     }
